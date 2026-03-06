@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FX SPACE - FXに再現性を。</title>
+    <meta property="og:title" content="FX SPACE - FXに再現性を。">
+    <meta property="og:description" content="日本最大規模のFXコミュニティ。プロトレーダー420名以上輩出。まずは無料でDiscordに参加。">
+    <meta property="og:image" content="https://x53cd2dc99410fa7737f3.vercel.app/img/og-preview-v2.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- STICKY CTA BAR -->
+<div class="sticky-bar" id="sticky-bar">
+    <div class="sticky-bar-inner">
+        <img src="img/fxspace-logo-horizontal.png" alt="FX SPACE" class="sticky-bar-logo">
+        <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn btn-primary btn-sm sticky-bar-cta">まずは無料で参加 →</a>
+    </div>
+</div>
+
+<!-- =============================================
+     1. HERO — 3秒で「何これ」
+     ============================================= -->
+<section class="hero" id="hero">
+    <canvas id="hero-globe"></canvas>
+    <img src="img/fxspace-logo-horizontal.png" alt="FX SPACE" class="hero-logo-single">
+    <div class="hero-inner">
+        <div class="hero-center-group">
+            <h1 class="heading-xl hero-gradient"><span class="word">FXに再現性を。</span></h1>
+            <p class="hero-subtitle-accent">日本最大規模のFXコミュニティ<br class="sp-br"> FX SPACE</p>
+        </div>
+    </div>
+    <div class="hero-bottom">
+        <div class="hero-stats" id="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-number"><span id="stat-pros">0</span><span class="hero-stat-unit">名+</span></div>
+                <div class="hero-stat-label">プロトレーダー輩出</div>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <div class="hero-stat-number hero-stat-yellow"><span id="stat-prop">0</span><span class="hero-stat-unit">名+</span></div>
+                <div class="hero-stat-label">プロップ合格者数</div>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+                <div class="hero-stat-number hero-stat-green"><span id="stat-amount">0</span><span class="hero-stat-unit">億円+</span></div>
+                <div class="hero-stat-label">メンバー総出金額</div>
+            </div>
+        </div>
+        <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn btn-hero-cta hero-cta-btn">無料で覗いてみる →</a>
+    </div>
+</section>
+
+<!-- =============================================
+     2. ROLE MODEL — 先輩の軌跡
+     ============================================= -->
+<section class="rolemodel-section" id="rolemodel">
+    <div class="rolemodel-inner">
+        <span class="section-title-badge section-title-badge--blue"><img class="hero-title-side hero-title-side--left" src="img/title-side-blue-left.png" alt="">ROLE MODEL<img class="hero-title-side hero-title-side--right" src="img/title-side-blue-right.png" alt=""></span>
+        <h2 class="heading-lg">ギャンブルトレードから、<br>プロトレーダーへ。</h2>
+        <p class="rolemodel-lead">FX SPACEメンバー「まささん」のリアルな軌跡。<br>正しい環境で学べば、人は変われる。</p>
+
+        <!-- ──── グラフ + STEPカード統合エリア ──── -->
+        <div class="rolemodel-chart-wrap">
+            <!-- STEP カード（グラフ上に配置） -->
+            <div class="rm-steps-overlay">
+                <div class="rm-step rm-step--danger">
+                    <div class="rm-step-icon">🎰</div>
+                    <div class="rm-step-body">
+                        <span class="rm-step-badge rm-step-badge--danger">2月〜3月</span>
+                        <h4 class="rm-step-title">ギャンブルトレード</h4>
+                        <p class="rm-step-desc">ハイレバ・お祈りトレードで資金を一瞬で溶かす</p>
+                    </div>
+                </div>
+                <div class="rm-step rm-step--warning">
+                    <div class="rm-step-icon">📚</div>
+                    <div class="rm-step-body">
+                        <span class="rm-step-badge rm-step-badge--warning">4月〜8月</span>
+                        <h4 class="rm-step-title">基礎学習 &amp; 環境認識</h4>
+                        <p class="rm-step-desc">ZeroPro90で環境認識を徹底、デモで練習を繰り返す</p>
+                    </div>
+                </div>
+                <div class="rm-step rm-step--success">
+                    <div class="rm-step-icon">💎</div>
+                    <div class="rm-step-body">
+                        <span class="rm-step-badge rm-step-badge--success">9月〜11月</span>
+                        <h4 class="rm-step-title">プロトレーダー</h4>
+                        <p class="rm-step-desc">リスク管理された環境で安定した利益を積み上げ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SVG グラフ -->
+            <div class="rolemodel-chart-container">
+                <svg class="rolemodel-chart" id="rolemodel-chart" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+                    <defs>
+                        <linearGradient id="rm-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#f87171"/>
+                            <stop offset="25%" stop-color="#f87171"/>
+                            <stop offset="50%" stop-color="#fbbf24"/>
+                            <stop offset="75%" stop-color="#34d399"/>
+                            <stop offset="100%" stop-color="#34d399"/>
+                        </linearGradient>
+                        <linearGradient id="rm-fill-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.12"/>
+                            <stop offset="100%" stop-color="#6ee7b7" stop-opacity="0"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Grid -->
+                    <line x1="80" y1="40" x2="760" y2="40" class="rm-grid"/>
+                    <line x1="80" y1="110" x2="760" y2="110" class="rm-grid"/>
+                    <line x1="80" y1="180" x2="760" y2="180" class="rm-grid"/>
+                    <line x1="80" y1="250" x2="760" y2="250" class="rm-grid rm-zero-line"/>
+                    <line x1="80" y1="340" x2="760" y2="340" class="rm-grid"/>
+
+                    <!-- Phase zones -->
+                    <rect x="80" y="30" width="170" height="320" rx="8" class="rm-phase-zone rm-phase-zone--red"/>
+                    <rect x="250" y="30" width="280" height="320" rx="8" class="rm-phase-zone rm-phase-zone--yellow"/>
+                    <rect x="530" y="30" width="230" height="320" rx="8" class="rm-phase-zone rm-phase-zone--green"/>
+
+                    <!-- Y-axis -->
+                    <text x="72" y="44" class="rm-axis-label" text-anchor="end">+1,000万</text>
+                    <text x="72" y="114" class="rm-axis-label" text-anchor="end">+700万</text>
+                    <text x="72" y="184" class="rm-axis-label" text-anchor="end">+300万</text>
+                    <text x="72" y="254" class="rm-axis-label" text-anchor="end">0</text>
+                    <text x="72" y="344" class="rm-axis-label" text-anchor="end">-400万</text>
+
+                    <!-- X-axis -->
+                    <text x="120" y="380" class="rm-axis-label" text-anchor="middle">2月</text>
+                    <text x="200" y="380" class="rm-axis-label" text-anchor="middle">3月</text>
+                    <text x="340" y="380" class="rm-axis-label" text-anchor="middle">5月</text>
+                    <text x="460" y="380" class="rm-axis-label" text-anchor="middle">7月</text>
+                    <text x="560" y="380" class="rm-axis-label" text-anchor="middle">9月</text>
+                    <text x="700" y="380" class="rm-axis-label" text-anchor="middle">11月</text>
+
+                    <!-- FX SPACE 加入マーカー -->
+                    <line x1="250" y1="35" x2="250" y2="350" class="rm-join-line"/>
+                    <rect x="203" y="38" width="94" height="28" rx="14" class="rm-join-bg"/>
+                    <text x="250" y="57" class="rm-join-text" text-anchor="middle">FX SPACE加入</text>
+
+                    <!-- Main line -->
+                    <path id="rm-chart-line" class="rm-chart-line"
+                          d="M120,250 L132,246 L142,218 L152,195 L165,180 L170,198 L178,248 L186,298 L194,330 L200,340 L210,340 L225,340 L240,340 L260,340 L280,340 L300,340 L320,340 L340,340 L360,340 L380,340 L400,340 L420,340 L440,340 L460,340 L480,340 L500,340 L520,340 L540,340 L555,340 L562,328 L572,300 L580,272 L590,245 L600,218 L612,185 L620,168 L632,148 L645,135 L660,125 L675,118 L690,112 L700,110"
+                          fill="none" stroke="url(#rm-gradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+                    <!-- Dots -->
+                    <circle cx="120" cy="250" r="6" class="rm-dot"/>
+                    <circle cx="165" cy="180" r="6" class="rm-dot"/>
+                    <circle cx="200" cy="340" r="6" class="rm-dot"/>
+                    <circle cx="555" cy="340" r="6" class="rm-dot"/>
+                    <circle cx="700" cy="110" r="7" class="rm-dot rm-dot--big"/>
+
+                    <!-- Dot labels -->
+                    <text x="165" y="168" class="rm-dot-label rm-label-peak" text-anchor="middle">ビギナーズラック +300万</text>
+                    <text x="200" y="330" class="rm-dot-label rm-label-bottom" text-anchor="middle">-400万のまま</text>
+                    <text x="692" y="98" class="rm-dot-label rm-label-top" text-anchor="end">1,100万出金 → トータル+700万 &#127881;</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- ──── 月収換算比較 ──── -->
+        <div class="rolemodel-compare">
+            <h3 class="rolemodel-subtitle">月収換算で比較するとどのくらい？</h3>
+            <div class="rm-compare-card">
+                <div class="rm-compare-bars">
+                    <div class="rm-bar-row">
+                        <div class="rm-bar-label">
+                            <span class="rm-bar-emoji">💼</span>
+                            <span class="rm-bar-name">本業</span>
+                        </div>
+                        <div class="rm-bar-track">
+                            <div class="rm-bar rm-bar--salary" id="rm-bar-salary">
+                                <span class="rm-bar-value">〜83万円<small>/月</small></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rm-bar-row">
+                        <div class="rm-bar-label">
+                            <span class="rm-bar-emoji">📈</span>
+                            <span class="rm-bar-name">FX</span>
+                        </div>
+                        <div class="rm-bar-track">
+                            <div class="rm-bar rm-bar--fx" id="rm-bar-fx">
+                                <span class="rm-bar-value">〜550万円<small>/月</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="rm-compare-multiplier" id="rm-multiplier">月収 <strong>6.6</strong> 倍</p>
+            </div>
+            <p class="rm-compare-note">※ 年収約1,000万の本業 vs FXでの2ヶ月間の出金1,100万から月収換算</p>
+        </div>
+
+        <div class="rolemodel-cta">
+            <p class="rolemodel-cta-text">まささんが変われたのは、<br><strong>正しい環境</strong>に飛び込んだから。</p>
+            <a href="#pricing" class="btn btn-crayon-rect-orange rolemodel-cta-btn">プランを見る &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     3. SOCIAL PROOF — FX SPACEとは？
+     ============================================= -->
+<section class="proof-section" id="proof">
+    <div class="proof-header">
+        <span class="section-title-badge section-title-badge--blue"><img class="hero-title-side hero-title-side--left" src="img/title-side-blue-left.png" alt="">ABOUT<img class="hero-title-side hero-title-side--right" src="img/title-side-blue-right.png" alt=""></span>
+        <img src="img/fxspace-logo-vertical.png" alt="FX SPACE" class="proof-logo">
+        <h2 class="heading-lg text-center">FX SPACEとは？</h2>
+        <img src="img/wave-line.png" alt="" class="proof-wave">
+        <p class="proof-lead">プロトレーダー420名以上を輩出した、日本最大規模のFXコミュニティ。<br>初心者からプロまで、本気でFXに取り組む仲間が集まる場所。</p>
+    </div>
+    <div class="proof-inner">
+        <div class="proof-card">
+            <span class="proof-icon">🏅</span>
+            <p class="proof-text">認定テクニカルアナリスト<br>（CMTA®）<strong>よすが</strong>が主宰</p>
+        </div>
+        <div class="proof-card">
+            <span class="proof-icon">🏆</span>
+            <p class="proof-text">Fintokei合格率<br><strong>業界トップクラス</strong></p>
+        </div>
+        <div class="proof-card">
+            <span class="proof-icon">📹</span>
+            <p class="proof-text">平日毎日更新の<br><strong>シナリオ動画</strong></p>
+        </div>
+        <div class="proof-card">
+            <span class="proof-icon">💬</span>
+            <p class="proof-text">24時間<br><strong>質問し放題</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     4. VALUE PROP — 3枚で核心
+     ============================================= -->
+<section class="features-section" id="features">
+    <div class="features-inner">
+        <span class="section-title-badge section-title-badge--blue"><img class="hero-title-side hero-title-side--left" src="img/title-side-blue-left.png" alt="">FX SPACEで何ができる？<img class="hero-title-side hero-title-side--right" src="img/title-side-blue-right.png" alt=""></span>
+        <h2 class="heading-lg text-center">学ぶ。磨く。稼ぐ。</h2>
+        <p class="features-lead">この3つを、すべてFX SPACE内で完結できます。</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-card-logos feature-card-logos--large">
+                    <img src="images/y-academy-icon.png" alt="Y Academy" class="feature-logo feature-logo--dual">
+                    <img src="images/zeropro90-logo.png" alt="ゼロプロ90" class="feature-logo feature-logo--dual">
+                </div>
+                <h3>学ぶ</h3>
+                <p>体系的カリキュラム＋90日集中プログラム。<br>プロが添削してくれるから、独学とは次元が違う。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-logos feature-card-logos--large">
+                    <img src="images/ytt-logo.png" alt="YTT" class="feature-logo">
+                </div>
+                <h3>磨く</h3>
+                <p>独自ツール「YTT」で実戦さながらの練習。<br>毎朝のシナリオ動画で、プロの視点が身につく。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-card-logos feature-card-logos--large">
+                    <img src="images/fintokei-logo-purple.png" alt="Fintokei" class="feature-logo">
+                </div>
+                <h3>稼ぐ</h3>
+                <p>運用資金ゼロでプロトレーダーへ。<br>Fintokei合格で、最大5,000万円の資金を運用。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     4. COMMUNITY — 覗き見体験
+     ============================================= -->
+<section class="community-section" id="community">
+    <div class="community-inner">
+        <span class="section-title-badge section-title-badge--blue"><img class="hero-title-side hero-title-side--left" src="img/title-side-blue-left.png" alt="">COMMUNITY<img class="hero-title-side hero-title-side--right" src="img/title-side-blue-right.png" alt=""></span>
+        <h2 class="heading-lg">一人で悩まない。<br>仲間がいる。</h2>
+        <p class="community-lead">初心者の質問にも、よすが本人が直接答える。<br>そんなコミュニティ、他にありますか？</p>
+
+        <div class="community-carousel" id="community-carousel">
+            <button class="community-carousel-arrow community-carousel-prev" id="cc-prev" aria-label="前へ">&#8249;</button>
+            <div class="community-carousel-track" id="cc-track">
+
+                <!-- 1: 初心者応援 -->
+                <div class="community-carousel-slide">
+                    <div class="community-chat static-chat">
+                        <div class="cc-header"><span class="cc-header-hash">#</span><span class="cc-header-name">初心者応援</span></div>
+                        <div class="cc-body">
+                            <div class="cc-messages">
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#5865f2;">C</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#5865f2;">craft beer</span><span class="cc-msg-time">02/16 12:18</span></div><div class="cc-msg-content">何度も資金を溶かしました… 成功してる方は何が違うのでしょう？😢</div><div class="cc-reactions"><span class="cc-reaction visible">😢 <span class="cc-reaction-count">3</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar cc-avatar-yosuga"></div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ed4245;">よすが</span><span class="cc-msg-time">02/16 12:30</span></div><div class="cc-reply-quote">何度も資金を溶かしました… 成功してる方は何が違う？</div><div class="cc-msg-content">センスは不要。決められた通りにできるかがポイント。シナリオ構築を続けよう🔥</div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#5865f2;">C</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#5865f2;">craft beer</span><span class="cc-msg-time">02/16 12:45</span></div><div class="cc-reply-quote">センスは不要。決められた通りにできるかが…</div><div class="cc-msg-content">ありがとうございます。温かいお言葉が嬉しいです🙏</div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#eb459e;">H</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#eb459e;">HiU</span><span class="cc-msg-time">02/16 13:02</span></div><div class="cc-reply-quote">何度も資金を溶かしました…</div><div class="cc-msg-content">6ヶ月デモで練習して、4H足でトレンド揃えてから入ったら勝率上がったよ！</div><div class="cc-reactions"><span class="cc-reaction visible">💪 <span class="cc-reaction-count">9</span></span><span class="cc-reaction visible">🔥 <span class="cc-reaction-count">6</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar cc-avatar-yosuga"></div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ed4245;">よすが</span><span class="cc-msg-time">02/16 13:10</span></div><div class="cc-msg-content">「負けてはいけない」をまず疑おう。今日はこうだった→次こうしよう、でOK👍</div><div class="cc-reactions"><span class="cc-reaction visible">❤️ <span class="cc-reaction-count">22</span></span><span class="cc-reaction visible">🙏 <span class="cc-reaction-count">15</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#57f287;">M</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#57f287;">Mochi</span><span class="cc-msg-time">今日 09:15</span></div><div class="cc-msg-content">今月から参加！Fintokei 3万円プラン今月負けなしです🙏</div><div class="cc-reactions"><span class="cc-reaction visible">🎉 <span class="cc-reaction-count">14</span></span><span class="cc-reaction visible">👏 <span class="cc-reaction-count">11</span></span></div></div></div>
+                            </div>
+                        </div>
+                        <div class="cc-input"><span class="cc-input-plus">＋</span><span class="cc-input-text">#初心者応援 でメッセージを送信</span></div>
+                    </div>
+                </div>
+
+                <!-- 2: プロに質問 -->
+                <div class="community-carousel-slide">
+                    <div class="community-chat static-chat">
+                        <div class="cc-header"><span class="cc-header-hash">#</span><span class="cc-header-name">プロに質問</span></div>
+                        <div class="cc-body">
+                            <div class="cc-messages">
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#fee75c;color:#000;">K</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#fee75c;">Kenta_FX</span><span class="cc-msg-time">02/13 20:14</span></div><div class="cc-msg-content">チャネル上限にぶつかってるように見えるのですが🤔</div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#ed4245;">r</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ed4245;">robuta</span><span class="cc-msg-time">02/13 21:30</span></div><div class="cc-reply-quote">チャネル上限にぶつかってるように見える…</div><div class="cc-msg-content">「トレンド転換の確認」がキーですね💦</div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#fee75c;color:#000;">K</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#fee75c;">Kenta_FX</span><span class="cc-msg-time">02/14 08:22</span></div><div class="cc-reply-quote">トレンド転換の確認がキー…</div><div class="cc-msg-content">1H足のシナリオ描画にすべき？上昇転換ポイントが掴めません…</div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#ed4245;">r</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ed4245;">robuta</span><span class="cc-msg-time">02/14 09:05</span></div><div class="cc-reply-quote">上昇転換ポイントが掴めません…</div><div class="cc-msg-content">日足で転換未確認。上昇トレンド内とは言えないです📝</div><div class="cc-reactions"><span class="cc-reaction visible">🔥 <span class="cc-reaction-count">5</span></span><span class="cc-reaction visible">📝 <span class="cc-reaction-count">3</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar cc-avatar-yosuga"></div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ed4245;">よすが</span><span class="cc-msg-time">02/14 12:40</span></div><div class="cc-reply-quote">チャネル上限にぶつかってるように見える…</div><div class="cc-msg-content">日足も下降トレンドとします📉 ラインあらためて表示しますね。</div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#fee75c;color:#000;">K</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#fee75c;">Kenta_FX</span><span class="cc-msg-time">02/14 13:15</span></div><div class="cc-reply-quote">日足も下降トレンドとします📉…</div><div class="cc-msg-content">シンプルでわかりやすいです！ありがとうございます🙏</div><div class="cc-reactions"><span class="cc-reaction visible">😊 <span class="cc-reaction-count">7</span></span></div></div></div>
+                            </div>
+                        </div>
+                        <div class="cc-input"><span class="cc-input-plus">＋</span><span class="cc-input-text">#プロに質問 でメッセージを送信</span></div>
+                    </div>
+                </div>
+
+                <!-- 3: 雑談 -->
+                <div class="community-carousel-slide">
+                    <div class="community-chat static-chat">
+                        <div class="cc-header"><span class="cc-header-hash">#</span><span class="cc-header-name">雑談</span></div>
+                        <div class="cc-body">
+                            <div class="cc-messages">
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#eb459e;">熊</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#eb459e;">熊</span><span class="cc-msg-time">02/14 11:20</span></div><div class="cc-msg-content">塩分過剰摂取で血圧が上昇トレンドに🤣<div class="cc-photo"><div class="cc-photo-item"><img src="images/chat_photo_2.png" alt="ラーメン" style="width:100%;height:100%;object-fit:cover;"></div></div></div><div class="cc-reactions"><span class="cc-reaction visible">🤣 <span class="cc-reaction-count">15</span></span><span class="cc-reaction visible">👍 <span class="cc-reaction-count">3</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#5865F2;">S</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#5865F2;">Sana</span><span class="cc-msg-time">02/14 11:52</span></div><div class="cc-reply-quote">塩分過剰摂取で血圧が上昇トレンドに🤣</div><div class="cc-msg-content">おいしそう🤤</div><div class="cc-reactions"><span class="cc-reaction visible">👍 <span class="cc-reaction-count">1</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#ffb347;color:#000;">や</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ffb347;">やまちゃん</span><span class="cc-msg-time">02/15 20:10</span></div><div class="cc-msg-content">松島海岸へ🚅 寿司食べ放題コスパ最強！<div class="cc-photo"><div class="cc-photo-item"><img src="images/chat_photo_3.png" alt="お寿司" style="width:80%;height:80%;object-fit:contain;"></div></div></div><div class="cc-reactions"><span class="cc-reaction visible">🔥 <span class="cc-reaction-count">8</span></span><span class="cc-reaction visible">😋 <span class="cc-reaction-count">5</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar cc-avatar-yosuga"></div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ed4245;">よすが</span><span class="cc-msg-time">02/15 20:25</span></div><div class="cc-reply-quote">松島海岸へ🚅 寿司食べ放題コスパ最強！</div><div class="cc-msg-content">え！？こんなでかいのあるんすか！？</div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#57f287;">Y</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#57f287;">Yuichi</span><span class="cc-msg-time">昨日 22:05</span></div><div class="cc-msg-content">エンドフィールド神ゲー😃 フレンド追加して！</div><div class="cc-reactions"><span class="cc-reaction visible">🎮 <span class="cc-reaction-count">6</span></span></div></div></div>
+                                <div class="cc-msg"><div class="cc-avatar" style="background:#ffb347;color:#000;">や</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ffb347;">やまちゃん</span><span class="cc-msg-time">昨日 22:20</span></div><div class="cc-reply-quote">エンドフィールド神ゲー😃 フレンド追加して！</div><div class="cc-msg-content">おもしろい！！申請しました🎉</div><div class="cc-reactions"><span class="cc-reaction visible">🎮 <span class="cc-reaction-count">9</span></span><span class="cc-reaction visible">👏 <span class="cc-reaction-count">4</span></span></div></div></div>
+                            </div>
+                        </div>
+                        <div class="cc-input"><span class="cc-input-plus">＋</span><span class="cc-input-text">#雑談 でメッセージを送信</span></div>
+                    </div>
+                </div>
+
+            </div>
+            <button class="community-carousel-arrow community-carousel-next" id="cc-next" aria-label="次へ">&#8250;</button>
+            <div class="community-carousel-dots">
+                <button class="community-carousel-dot active" data-index="0"></button>
+                <button class="community-carousel-dot" data-index="1"></button>
+                <button class="community-carousel-dot" data-index="2"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     5. FOUNDER — よすがの存在感
+     ============================================= -->
+<section class="founder-section" id="founder">
+    <div class="founder-inner">
+        <span class="section-title-badge section-title-badge--blue"><img class="hero-title-side hero-title-side--left" src="img/title-side-blue-left.png" alt="">FOUNDER<img class="hero-title-side hero-title-side--right" src="img/title-side-blue-right.png" alt=""></span>
+        <h2 class="founder-section-title">主宰者</h2>
+        <div class="founder-card">
+            <img src="img/symbol-mark.png" alt="" class="founder-bg-mark">
+            <div class="founder-top">
+                <div class="founder-avatar"><img src="images/chat_photo_4.png" alt="よすが"></div>
+                <div>
+                    <h2 class="founder-name">よすが</h2>
+                </div>
+                <div class="founder-sns">
+                    <a href="https://x.com/yosuga____" target="_blank"><img src="img/icon-x.png" alt="X"></a>
+                    <a href="https://www.youtube.com/@fxyosuga" target="_blank"><img src="img/icon-youtube.png" alt="YouTube"></a>
+                    <a href="https://discord.gg/CcUtqSdRDZ" target="_blank"><img src="img/icon-discord.png" alt="Discord"></a>
+                </div>
+            </div>
+
+            <ul class="founder-creds-list">
+                <li>認定テクニカルアナリスト（CMTA®）</li>
+                <li>トレーダー歴 7年</li>
+                <li>書籍「結果を勝ち取る！本気のFX」著者</li>
+                <li>プロトレーダー 420人以上輩出</li>
+            </ul>
+
+            <div class="founder-message">
+                <p>「FXで人生を変える」を冗談じゃなく<br>本気で実現できる環境を作りました。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     6. PRICING — シンプルに
+     ============================================= -->
+<section class="pricing-section" id="pricing">
+    <div class="pricing-inner">
+        <div class="pricing-header">
+            <span class="section-title-badge section-title-badge--blue"><img class="hero-title-side hero-title-side--left" src="img/title-side-blue-left.png" alt="">PLANS<img class="hero-title-side hero-title-side--right" src="img/title-side-blue-right.png" alt=""></span>
+            <h2>無料から<span class="pricing-h2-accent">始められる</span></h2>
+        </div>
+        <div class="plan-cards">
+            <!-- Free -->
+            <div class="plan-card">
+                <div class="plan-name" style="color:#9ca3af;">フリー</div>
+                <div class="plan-price-wrap">
+                    <div class="plan-price-free">¥0</div>
+                </div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">速攻プロフローチャート</span></li>
+                </ul>
+                <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn plan-cta plan-cta-outline">無料で始める →</a>
+            </div>
+            <!-- Standard -->
+            <div class="plan-card plan-recommended">
+                <div class="plan-badge plan-badge-rec">おすすめ</div>
+                <div class="plan-name">スタンダード</div>
+                <div class="plan-price-wrap">
+                    <span class="plan-price-amount">¥2,900</span><span class="plan-price-period">/月</span>
+                </div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">毎日のシナリオ動画</span></li>
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">ゼロプロ90</span></li>
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">YTT</span></li>
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">プロに質問し放題</span></li>
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">AIサポート</span></li>
+                </ul>
+                <p class="plan-more">...ほか多数の機能を利用可能</p>
+                <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn plan-cta plan-cta-primary">詳しくはDiscordで →</a>
+            </div>
+            <!-- Premium -->
+            <div class="plan-card">
+                <div class="plan-badge plan-badge-premium">全機能解放</div>
+                <div class="plan-name" style="color:#818cf8;">プレミアム</div>
+                <div class="plan-price-wrap">
+                    <span class="plan-price-amount">¥5,410~</span><span class="plan-price-period">/月</span>
+                </div>
+                <div class="plan-price-sub">年払い ¥64,900/年 ｜ 月払い ¥5,900/月</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">スタンダードの全機能</span></li>
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">ライブチャート分析</span></li>
+                    <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">トレード交流</span></li>
+                </ul>
+                <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn plan-cta plan-cta-outline">詳しくはDiscordで →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =============================================
+     7. FINAL CTA — 背中を押す
+     ============================================= -->
+<section class="cta-section" id="cta">
+    <h2 class="heading-xl">あなたの人生を変える一歩を</h2>
+    <img src="img/dotline-yellow.png" alt="" class="cta-dotline">
+    <p class="subtitle">まずは無料のDiscordから。30秒で完了です。</p>
+    <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn btn-crayon-rect-orange cta-main-btn">無料でDiscordに参加する →</a>
+    <div class="cta-sublink">
+        <a href="https://www.youtube.com/@fxyosuga" target="_blank">よすがのYouTubeを見る →</a>
+    </div>
+    <div class="cta-footer-bottom">
+        <p>&copy; 2026 FX SPACE. All rights reserved.</p>
+    </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/hero-globe.js"></script>
+<script src="js/lp.js"></script>
+</body>
+</html>
