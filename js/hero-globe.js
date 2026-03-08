@@ -5,7 +5,14 @@
     // --- Setup ---
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-    camera.position.z = 4.2;
+    function getCameraZ() {
+        var w = window.innerWidth;
+        if (w < 480) return 6.5;
+        if (w < 768) return 5.5;
+        if (w < 1024) return 4.8;
+        return 4.2;
+    }
+    camera.position.z = getCameraZ();
 
     var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: window.devicePixelRatio < 2 });
     var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
@@ -541,16 +548,15 @@
     }
     animate();
 
-    // --- Resize ---
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-            var w = canvas.clientWidth;
-            var h = canvas.clientHeight;
-            camera.aspect = w / h;
-            camera.updateProjectionMatrix();
-            renderer.setSize(w, h);
-        }, 150);
-    });
+    // --- Resize (即時追従) ---
+    function onResize() {
+        var w = canvas.clientWidth;
+        var h = canvas.clientHeight;
+        if (w === 0 || h === 0) return;
+        camera.aspect = w / h;
+        camera.position.z = getCameraZ();
+        camera.updateProjectionMatrix();
+        renderer.setSize(w, h);
+    }
+    window.addEventListener('resize', onResize);
 })();

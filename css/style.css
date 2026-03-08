@@ -403,17 +403,17 @@ body {
 }
 
 /* Community Discord — 少しだけトーンを抑えてLP馴染み */
-.community-section .cc-msg-name[style*="ed4245"] { color: #d05555 !important; }
+.community-section .cc-msg-name[style*="ed4245"] { color: #e05858 !important; }
 .community-section .cc-msg-name[style*="5865f2"],
-.community-section .cc-msg-name[style*="5865F2"] { color: #6d78d6 !important; }
-.community-section .cc-msg-name[style*="eb459e"] { color: #d060a0 !important; }
-.community-section .cc-msg-name[style*="57f287"] { color: #50c878 !important; }
-.community-section .cc-msg-name[style*="fee75c"] { color: #dcc855 !important; }
-.community-section .cc-msg-name[style*="ffb347"] { color: #dda050 !important; }
-.community-section .cc-msg-content { color: rgba(255,255,255,0.78); }
-.community-section .cc-msg-time { color: rgba(255,255,255,0.3); }
-.community-section .cc-header-name { color: rgba(255,255,255,0.8); }
-.community-section .cc-reply-quote { color: rgba(255,255,255,0.35); }
+.community-section .cc-msg-name[style*="5865F2"] { color: #7882e0 !important; }
+.community-section .cc-msg-name[style*="eb459e"] { color: #e068b0 !important; }
+.community-section .cc-msg-name[style*="57f287"] { color: #58d880 !important; }
+.community-section .cc-msg-name[style*="fee75c"] { color: #e8d058 !important; }
+.community-section .cc-msg-name[style*="ffb347"] { color: #e8b050 !important; }
+.community-section .cc-msg-content { color: rgba(255,255,255,0.88); }
+.community-section .cc-msg-time { color: rgba(255,255,255,0.4); }
+.community-section .cc-header-name { color: rgba(255,255,255,0.9); }
+.community-section .cc-reply-quote { color: rgba(255,255,255,0.45); }
 
 /* Discord Chat UI */
 .community-chat {
@@ -1299,14 +1299,14 @@ body {
     box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.04) inset;
 }
 .preview-panel .cc-body { min-height: auto; max-height: 420px; }
-.preview-panel .cc-header-name { color: rgba(255,255,255,0.8); }
-.preview-panel .cc-msg-name[style*="ed4245"] { color: #d05555 !important; }
-.preview-panel .cc-msg-time { color: rgba(255,255,255,0.3); }
-.preview-panel .cc-msg-content { color: rgba(255,255,255,0.78); }
-.preview-panel .cc-yt-title { color: #3d9ad6; }
-.preview-panel .cc-yt-play { color: #d05050; }
-.preview-panel .cc-yt-channel { color: rgba(255,255,255,0.4); }
-.preview-panel .cc-reply-quote { color: rgba(255,255,255,0.35); }
+.preview-panel .cc-header-name { color: rgba(255,255,255,0.9); }
+.preview-panel .cc-msg-name[style*="ed4245"] { color: #e05858 !important; }
+.preview-panel .cc-msg-time { color: rgba(255,255,255,0.4); }
+.preview-panel .cc-msg-content { color: rgba(255,255,255,0.88); }
+.preview-panel .cc-yt-title { color: #4db0e8; }
+.preview-panel .cc-yt-play { color: #e05050; }
+.preview-panel .cc-yt-channel { color: rgba(255,255,255,0.5); }
+.preview-panel .cc-reply-quote { color: rgba(255,255,255,0.45); }
 
 /* --- Panel 2: YTT (4-panel grid) --- */
 .lp-ytt-grid {
@@ -1381,30 +1381,33 @@ body {
     text-align: left; max-width: 100%;
 }
 
-/* Discord cards — 色相そのまま、トーンを落とす */
+/* Discord cards */
 .preview-panel .zp-discord {
     box-shadow: 0 16px 48px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.03) inset;
 }
 .preview-panel .zp-dc-body { max-height: 380px; }
 .preview-panel .zp-dc-images { border-radius: 10px; overflow: hidden; }
-.preview-panel .zp-dc-name[style*="e74c3c"] { color: #d05555 !important; }
-.preview-panel .zp-dc-text { color: rgba(255,255,255,0.78); }
-.preview-panel .zp-dc-time { color: rgba(255,255,255,0.3); }
-.preview-panel .zp-dc-divider { color: rgba(255,255,255,0.28); }
-.preview-panel .zp-dc-link { color: #3d9ad6 !important; }
-.preview-panel .zp-dc-yt-title { color: #3d9ad6; }
-.preview-panel .zp-dc-yt-embed { border-left-color: #d05050; }
-.preview-panel .zp-dc-yt-play { background: rgba(208,80,80,0.85); }
-.preview-panel .zp-dc-question { color: rgba(255,255,255,0.82); }
-.preview-panel .zp-dc-av-s { background: #5060d0; }
-.preview-panel .zp-dc-avatar[style*="e67e22"] { background: #cc8830 !important; }
-.preview-panel .zp-dc-sb-dot[style*="9b59b6"] { background: #9060a8 !important; }
-.preview-panel .zp-dc-sb-dot[style*="2ecc71"] { background: #30b060 !important; }
-.preview-panel .zp-dc-sb-dot[style*="3498db"] { background: #3090c8 !important; }
-.preview-panel .zp-dc-sb-dot[style*="f1c40f"] { background: #d4b020 !important; }
-.preview-panel .zp-dc-sb-dot[style*="e74c3c"] { background: #d05555 !important; }
-.preview-panel .zp-dc-header { color: rgba(255,255,255,0.8); }
-.preview-panel .zp-dc-react { color: rgba(255,255,255,0.65); }
+.preview-panel .zp-dc-name { color: #fff; }
+.preview-panel .zp-dc-name[style*="e74c3c"] { color: #e8504f !important; }
+.preview-panel .zp-dc-text { color: #dbdee1; }
+.preview-panel .zp-dc-time { color: rgba(255,255,255,0.45); }
+.preview-panel .zp-dc-divider { color: rgba(255,255,255,0.4); }
+.preview-panel .zp-dc-link { color: #1da1f2 !important; }
+.preview-panel .zp-dc-yt-title { color: #1da1f2; }
+.preview-panel .zp-dc-yt-label { color: rgba(255,255,255,0.5); }
+.preview-panel .zp-dc-yt-channel { color: rgba(255,255,255,0.8); }
+.preview-panel .zp-dc-yt-embed { border-left-color: #e8504f; background: #383a40; }
+.preview-panel .zp-dc-yt-play { background: rgba(232,80,79,0.9); }
+.preview-panel .zp-dc-question { color: #f2f3f5; }
+.preview-panel .zp-dc-av-s { background: #5865f2; }
+.preview-panel .zp-dc-avatar[style*="e67e22"] { background: #e67e22 !important; }
+.preview-panel .zp-dc-sb-dot[style*="9b59b6"] { background: #9b59b6 !important; }
+.preview-panel .zp-dc-sb-dot[style*="2ecc71"] { background: #2ecc71 !important; }
+.preview-panel .zp-dc-sb-dot[style*="3498db"] { background: #3498db !important; }
+.preview-panel .zp-dc-sb-dot[style*="f1c40f"] { background: #f1c40f !important; }
+.preview-panel .zp-dc-sb-dot[style*="e74c3c"] { background: #e8504f !important; }
+.preview-panel .zp-dc-header { color: rgba(255,255,255,0.95); }
+.preview-panel .zp-dc-react { color: rgba(255,255,255,0.85); }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -1418,10 +1421,7 @@ body {
     .lp-ytt-grid { grid-template-columns: 1fr; }
     .preview-panel .zp-dc-submit-row { padding-left: 0; flex-direction: column; }
     .preview-panel .zp-dc-sidebar {
-        position: static; width: 100%;
-        border-radius: 12px 12px 0 0;
-        border-right: 1px solid rgba(255,255,255,0.05);
-        max-height: 180px;
+        display: none;
     }
     .preview-panel .zp-dc-submit-row .zp-discord { border-radius: 0 0 12px 12px; }
     .cc-chart-grid { grid-template-columns: 1fr; gap: 0.5rem; }
