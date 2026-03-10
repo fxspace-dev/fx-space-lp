@@ -57,22 +57,26 @@
 
     // Hero
     gsap.from('.hero-inner', { opacity: 0, y: 30, duration: 0.9, ease: 'power3.out', delay: 0.1 });
-    gsap.to('#hero-stats', {
-        opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.6,
-        onComplete: function () {
-            countUp(document.getElementById('stat-pros'), 420, 1800);
-            countUp(document.getElementById('stat-prop'), 300, 1500);
-            countUp(document.getElementById('stat-amount'), 1.2, 1200, 1);
-        }
-    });
-
-    // Proof
-    gsap.utils.toArray('.proof-card').forEach(function (c, i) {
-        gsap.to(c, {
-            scrollTrigger: { trigger: c, start: 'top 90%', once: true },
-            opacity: 1, y: 0, duration: 0.5, delay: i * 0.08, ease: 'power3.out'
+    // Achievements: reveal + countUp
+    (function() {
+        var nums = document.querySelector('.achv-nums');
+        if (!nums) return;
+        var counted = false;
+        ScrollTrigger.create({
+            trigger: nums,
+            start: 'top 80%',
+            onEnter: function() {
+                nums.classList.add('is-visible');
+                if (counted) return;
+                counted = true;
+                document.querySelectorAll('.achv-count').forEach(function(el) {
+                    var target = parseFloat(el.getAttribute('data-target'));
+                    var dec = parseInt(el.getAttribute('data-dec')) || 0;
+                    countUp(el, target, 1600, dec);
+                });
+            }
         });
-    });
+    })();
 
     // Features
     gsap.utils.toArray('.feature-card').forEach(function (c, i) {
@@ -82,8 +86,8 @@
         });
     });
 
-    // Community chat
-    gsap.from('.community-chat', {
+    // Community chat (only in community section, not preview)
+    gsap.from('.community-section .community-chat', {
         scrollTrigger: { trigger: '.community-section', start: 'top 78%', once: true },
         opacity: 0, y: 40, duration: 0.8, ease: 'power3.out'
     });
@@ -185,9 +189,20 @@
         var current = 0, total = slides.length;
         var dots = carousel.querySelectorAll('.rm-carousel-dot');
         var tabs = carousel.querySelectorAll('.rm-tab');
+        var pill = carousel.querySelector('.rm-tabs-pill');
         var prevBtn = document.getElementById('rm-prev');
         var nextBtn = document.getElementById('rm-next');
         var animatedSlides = {};
+
+        function movePill(idx) {
+            if (!pill || !tabs[idx]) return;
+            var tab = tabs[idx];
+            var parent = tab.parentElement;
+            pill.style.width = tab.offsetWidth + 'px';
+            pill.style.transform = 'translateX(' + (tab.offsetLeft - parent.offsetLeft - 4) + 'px)';
+        }
+        // Initial position
+        setTimeout(function () { movePill(0); }, 50);
 
         // Section header animation
         gsap.from('.rolemodel-inner .heading-lg', {
@@ -241,6 +256,7 @@
             for (var t = 0; t < tabs.length; t++) {
                 tabs[t].classList.toggle('active', t === current);
             }
+            movePill(current);
             animateSlide(slides[current], current);
         }
 
@@ -264,6 +280,8 @@
                 goTo(parseInt(this.getAttribute('data-index')));
             });
         }
+
+        // (tilt removed — spotlight style)
 
         // Swipe support
         var startX = 0, diffX = 0;
@@ -404,29 +422,59 @@
         }
     });
 
-    // ── FAQ ──
+    // ── FAQ interactive chat ──
     (function () {
-        var items = document.querySelectorAll('.faq-item');
-        if (!items.length) return;
+        var faqData = [
+            { q: 'FX未経験でも大丈夫？', a: 'もちろん！メンバーの約半数が未経験スタートです。ゼロプロ90は完全初心者向けのカリキュラムだし、デモトレードから始めるので安心してください👍', reactions: '🙏 24 💪 18' },
+            { q: 'Fintokeiって何？', a: 'プロップファームと呼ばれるもので、チャレンジプランを購入してデモ口座で利益目標を達成すると、利益の一部を報酬として受け取れる仕組みです。自分の資金を運用せずに稼げるのが魅力ですね🔥', reactions: '🔥 31' },
+            { q: '必要な資金は？', a: 'フリープランは無料、スタンダードでも月2,900円です。まずは無料で雰囲気を見てみてください！', reactions: '😊 15' },
+            { q: '仕事や学校と両立できる？', a: 'できます！むしろ会社員や学生の方も多いです。シナリオ動画は毎朝出すのでスキマ時間にチェックできるし、トレード自体も1日15〜30分あればOK。無理なく続けられますよ👌', reactions: '👍 22 ❤️ 9' },
+            { q: '他との違いは？', a: '僕自身が毎日シナリオ動画を出して、質問にも直接答えてるところ。あとは独自ツールYTTと、420名以上のプロ輩出という結果ですね。口だけじゃなく数字で証明してます📊', reactions: '🔥 27 👏 14' },
+            { q: '途中で解約できる？', a: 'もちろん！違約金も縛り期間もないので、気軽に始めてもらって大丈夫です🙆‍♂️', reactions: '🙏 19' }
+        ];
+        var messages = document.getElementById('faq-messages');
+        var body = document.getElementById('faq-chat-body');
+        var choices = document.querySelectorAll('.faq-choice');
+        if (!messages || !choices.length) return;
 
-        // Close others when one opens
-        items.forEach(function (item) {
-            item.addEventListener('toggle', function () {
-                if (this.open) {
-                    items.forEach(function (other) {
-                        if (other !== item && other.open) other.open = false;
-                    });
-                }
+        function scrollToBottom() {
+            setTimeout(function () { body.scrollTop = body.scrollHeight; }, 50);
+        }
+
+        function makeReactions(str) {
+            var parts = str.split(' ');
+            var html = '';
+            for (var i = 0; i < parts.length; i += 2) {
+                html += '<span class="cc-reaction visible">' + parts[i] + ' <span class="cc-reaction-count">' + parts[i + 1] + '</span></span>';
+            }
+            return html;
+        }
+
+        function postQuestion(idx) {
+            var data = faqData[idx];
+            // User question
+            var userMsg = document.createElement('div');
+            userMsg.className = 'cc-msg faq-msg-new';
+            userMsg.innerHTML = '<div class="cc-avatar" style="background:#fff;">👤</div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#5865f2;">あなた</span><span class="cc-msg-time">今</span></div><div class="cc-msg-content">' + data.q + '</div></div>';
+            messages.appendChild(userMsg);
+            scrollToBottom();
+
+            // Yosuga reply
+            setTimeout(function () {
+                var replyMsg = document.createElement('div');
+                replyMsg.className = 'cc-msg faq-msg-new';
+                replyMsg.innerHTML = '<div class="cc-avatar cc-avatar-yosuga"></div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name" style="color:#ed4245;">よすが</span><span class="cc-msg-time">今</span></div><div class="cc-reply-quote">' + data.q + '</div><div class="cc-msg-content">' + data.a + '</div><div class="cc-reactions">' + makeReactions(data.reactions) + '</div></div>';
+                messages.appendChild(replyMsg);
+                scrollToBottom();
+            }, 1000);
+        }
+
+        choices.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                postQuestion(parseInt(this.getAttribute('data-faq-idx')));
             });
         });
 
-        // GSAP reveal
-        gsap.utils.toArray('.faq-item').forEach(function (item, i) {
-            gsap.to(item, {
-                scrollTrigger: { trigger: '.faq-section', start: 'top 85%', once: true },
-                opacity: 1, y: 0, duration: 0.5, delay: i * 0.08, ease: 'power3.out'
-            });
-        });
     })();
 
     // ── Content Preview tabs + pager ──

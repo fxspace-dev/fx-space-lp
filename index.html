@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FX SPACE - FXに再現性を。</title>
-    <meta property="og:title" content="FX SPACE - FXに再現性を。">
+    <title>FX SPACE - 勝ってる人は、ここにいた。</title>
+    <meta property="og:title" content="FX SPACE - 勝ってる人は、ここにいた。">
     <meta property="og:description" content="日本最大規模のFXコミュニティ。プロトレーダー420名以上輩出。まずは無料でDiscordに参加。">
     <meta property="og:image" content="https://fxspace-dev.github.io/fx-space-lp/img/og-preview-lp.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -20,7 +20,7 @@
 <div class="sticky-bar" id="sticky-bar">
     <div class="sticky-bar-inner">
         <img src="img/fxspace-logo-horizontal.png" alt="FX SPACE" class="sticky-bar-logo">
-        <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn btn-primary btn-sm sticky-bar-cta">まずは無料で参加 →</a>
+        <a href="#pricing" class="btn btn-primary btn-sm sticky-bar-cta">参加する →</a>
     </div>
 </div>
 
@@ -31,59 +31,58 @@
     <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--red bg-geo--hero-tl is-visible" aria-hidden="true">
     <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--blue bg-geo--hero-br is-visible" aria-hidden="true">
     <canvas id="hero-globe"></canvas>
-    <img src="img/fxspace-logo-horizontal.png" alt="FX SPACE" class="hero-logo-single">
     <div class="hero-inner">
         <div class="hero-center-group">
-            <h1 class="heading-xl hero-gradient"><span class="word">FXに再現性を。</span></h1>
-            <p class="hero-subtitle-accent">日本最大規模のFXコミュニティ<br class="sp-br"> FX SPACE</p>
+            <img src="img/fxspace-logo-text.png" alt="FX SPACE" class="hero-logo-single">
+            <h1 class="heading-xl hero-gradient"><span class="word">勝ってる人は、ここにいた。</span></h1>
         </div>
     </div>
     <div class="hero-bottom">
-        <div class="hero-stats" id="hero-stats">
-            <div class="hero-stat">
-                <div class="hero-stat-number"><span id="stat-pros">0</span><span class="hero-stat-unit">名+</span></div>
-                <div class="hero-stat-label"><span class="tooltip-wrap">プロトレーダー<button class="tooltip-trigger" aria-label="用語説明">i</button><span class="tooltip-bubble">Fintokeiの審査に合格し、提供された資金で利益を出金できるトレーダーのこと</span></span>輩出</div>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat">
-                <div class="hero-stat-number hero-stat-yellow"><span id="stat-prop">0</span><span class="hero-stat-unit">名+</span></div>
-                <div class="hero-stat-label"><span class="tooltip-wrap">プロップ<button class="tooltip-trigger" aria-label="用語説明">i</button><span class="tooltip-bubble">プロップファームとは、トレーダーに運用資金を提供する企業のこと。審査に合格すると資金を預けてもらい、利益の一部を報酬として受け取れる</span></span>合格者数</div>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat">
-                <div class="hero-stat-number hero-stat-green"><span id="stat-amount">0</span><span class="hero-stat-unit">億円+</span></div>
-                <div class="hero-stat-label">メンバー総出金額</div>
-            </div>
-        </div>
+        <p class="hero-subtitle-accent">日本最大規模プロトレーダー輩出機関</p>
         <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn btn-hero-cta hero-cta-btn">無料で覗いてみる →</a>
     </div>
 </section>
 
-<hr class="section-divider">
 <!-- =============================================
-     2. ROLE MODEL — 先輩の軌跡
+     ACHIEVEMENTS — 実績セクション
      ============================================= -->
-<section class="rolemodel-section" id="rolemodel">
-    <div class="section-glow section-glow--indigo-tr"></div>
-    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--mix bg-geo--rm-behind" aria-hidden="true">
-    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--blue bg-geo--rm-bl" aria-hidden="true">
-    <div class="rolemodel-inner">
-        <span class="section-title-badge section-title-badge--blue">ROLE MODEL</span>
-        <h2 class="heading-lg">正しい環境で学べば、<br>人は変われる。</h2>
-        <p class="rolemodel-lead">バックグラウンドも経験年数もバラバラ。<br>共通点は「FX SPACEで学んだ」こと。</p>
+<section class="achv" id="achievements">
+    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--red bg-geo--achv-left" aria-hidden="true">
+    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--blue bg-geo--achv-right" aria-hidden="true">
+    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--mix bg-geo--achv-nums" aria-hidden="true">
+    <div class="achv-inner">
+        <span class="section-title-badge section-title-badge--blue">実績は？</span>
+        <h2 class="heading-lg text-center">数字が、証明する。</h2>
+        <div class="achv-nums">
+            <div class="achv-stat">
+                <span class="achv-stat-label">プロトレーダー輩出</span>
+                <span class="achv-stat-num"><span class="achv-count" data-target="420">0</span><span class="achv-stat-suffix">名+</span></span>
+            </div>
+            <div class="achv-stat">
+                <span class="achv-stat-label">プロップ審査 合格</span>
+                <span class="achv-stat-num"><span class="achv-count" data-target="300">0</span><span class="achv-stat-suffix">名+</span></span>
+            </div>
+            <div class="achv-stat">
+                <span class="achv-stat-label">メンバー総出金額</span>
+                <span class="achv-stat-num"><span class="achv-count" data-target="1.2" data-dec="1">0</span><span class="achv-stat-suffix">億円+</span></span>
+            </div>
+        </div>
+
+        <p class="achv-bridge" id="rolemodel">会社員、主婦、大学生 —— 普通の人たちが、<br>FX SPACEでプロへの道を歩んでいます。</p>
 
         <div class="rm-carousel" id="rm-carousel">
             <div class="rm-tabs">
-                <button class="rm-tab active" data-index="0"><span class="rm-tab-avatar" style="background:#ed4245;">M</span>まささん</button>
-                <button class="rm-tab" data-index="1"><span class="rm-tab-avatar" style="background:#ec4899;">A</span>あかりさん</button>
-                <button class="rm-tab" data-index="2"><span class="rm-tab-avatar" style="background:#57f287;">R</span>りょうたさん</button>
+                <div class="rm-tabs-pill"></div>
+                <button class="rm-tab active" data-index="0"><img src="images/avatar-masa.png" alt="M" class="rm-tab-avatar-img"><span class="rm-tab-info"><span class="rm-tab-name">まささん</span><span class="rm-tab-meta">会社員 / 加入歴10ヶ月</span></span></button>
+                <button class="rm-tab" data-index="1"><span class="rm-tab-avatar" style="background:#ec4899;">A</span><span class="rm-tab-info"><span class="rm-tab-name">あかりさん</span><span class="rm-tab-meta">主婦 / 加入歴8ヶ月</span></span></button>
+                <button class="rm-tab" data-index="2"><span class="rm-tab-avatar" style="background:#57f287;">R</span><span class="rm-tab-info"><span class="rm-tab-name">りょうたさん</span><span class="rm-tab-meta">大学生 / 加入歴5ヶ月</span></span></button>
             </div>
             <div class="rm-carousel-track">
 
                 <!-- ===== Slide 1: まささん ===== -->
                 <div class="rm-carousel-slide is-active">
                     <div class="rm-slide-profile">
-                        <div class="rm-slide-avatar" style="background:#ed4245;">M</div>
+                        <img src="images/avatar-masa.png" alt="M" class="rm-slide-avatar-img">
                         <div><div class="rm-slide-name">まささん</div><div class="rm-slide-meta">会社員 / 加入歴10ヶ月</div></div>
                     </div>
                     <div class="rolemodel-chart-wrap">
@@ -111,7 +110,7 @@
                             <div class="rm-summary-stat-divider"></div>
                             <div class="rm-summary-stat"><div class="rm-summary-stat-number rm-summary-stat-number--active">継続中</div><div class="rm-summary-stat-label">現在もプロとして活動</div></div>
                         </div>
-                        <div class="rm-quote"><div class="rm-quote-inner"><p class="rm-quote-text">400万円の損失から一転、「環境認識の言語化」を武器に2ヶ月で1,100万円出金！ 労働ではなく<strong>「お金でお金を稼ぐ感覚」</strong>がようやく見え始めました。</p><p class="rm-quote-name">— まささん（会社員）</p></div></div>
+                        <div class="rm-quote"><div class="rm-quote-inner"><p class="rm-quote-text">400万円の損失から一転、「環境認識の言語化」を武器に2ヶ月で1,100万円出金！ 労働ではなく<strong>「お金でお金を稼ぐ感覚」</strong>がようやく見え始めました。</p><p class="rm-quote-name">— まささん</p></div></div>
                     </div>
                 </div>
 
@@ -146,7 +145,7 @@
                             <div class="rm-summary-stat-divider"></div>
                             <div class="rm-summary-stat"><div class="rm-summary-stat-number rm-summary-stat-number--active">継続中</div><div class="rm-summary-stat-label">月次プラス3ヶ月連続</div></div>
                         </div>
-                        <div class="rm-quote"><div class="rm-quote-inner"><p class="rm-quote-text">子育ての合間にデモから始めました。<strong>「質問し放題」が本当にありがたくて</strong>、初歩的な質問にもよすがさんが丁寧に答えてくれる。半年で自分の手法が固まって、今は毎月プラスで終われています。</p><p class="rm-quote-name">— あかりさん（主婦）</p></div></div>
+                        <div class="rm-quote"><div class="rm-quote-inner"><p class="rm-quote-text">子育ての合間にデモから始めました。<strong>「質問し放題」が本当にありがたくて</strong>、初歩的な質問にもよすがさんが丁寧に答えてくれる。半年で自分の手法が固まって、今は毎月プラスで終われています。</p><p class="rm-quote-name">— あかりさん</p></div></div>
                     </div>
                 </div>
 
@@ -181,7 +180,7 @@
                             <div class="rm-summary-stat-divider"></div>
                             <div class="rm-summary-stat"><div class="rm-summary-stat-number rm-summary-stat-number--active">挑戦中</div><div class="rm-summary-stat-label">プロトレーダー目前</div></div>
                         </div>
-                        <div class="rm-quote"><div class="rm-quote-inner"><p class="rm-quote-text">バイト代の一部で始めました。<strong>YTTのおかげでチャート分析のスピードが段違い</strong>。先輩トレーダーが「ここはこう見る」って具体的に教えてくれるから、独学とは成長速度が全然違います。</p><p class="rm-quote-name">— りょうたさん（大学生）</p></div></div>
+                        <div class="rm-quote"><div class="rm-quote-inner"><p class="rm-quote-text">バイト代の一部で始めました。<strong>YTTのおかげでチャート分析のスピードが段違い</strong>。先輩トレーダーが「ここはこう見る」って具体的に教えてくれるから、独学とは成長速度が全然違います。</p><p class="rm-quote-name">— りょうたさん</p></div></div>
                     </div>
                 </div>
 
@@ -190,44 +189,6 @@
             <button class="rm-carousel-arrow rm-carousel-next" id="rm-next" aria-label="次へ">&#8250;</button>
         </div>
 
-        <div class="rolemodel-cta">
-            <p class="rolemodel-cta-text">彼らが変われたのは、<br><strong>正しい環境</strong>に飛び込んだから。</p>
-            <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn btn-glass rolemodel-cta-btn">無料で参加する &rarr;</a>
-        </div>
-    </div>
-</section>
-
-<hr class="section-divider">
-<!-- =============================================
-     3. SOCIAL PROOF — FX SPACEとは？
-     ============================================= -->
-<section class="proof-section" id="proof">
-    <div class="section-glow section-glow--violet-bl"></div>
-    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--red bg-geo--proof-left" aria-hidden="true">
-    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--blue bg-geo--proof-right" aria-hidden="true">
-    <div class="proof-header">
-        <span class="section-title-badge section-title-badge--blue">ABOUT</span>
-        <img src="img/fxspace-logo-vertical-new.png" alt="FX SPACE" class="proof-logo">
-        <h2 class="heading-lg text-center">FX SPACEとは？</h2>
-        <p class="proof-lead">プロトレーダー420名以上を輩出した、日本最大規模のFXコミュニティ。<br>初心者からプロまで、本気でFXに取り組む仲間が集まる場所。</p>
-    </div>
-    <div class="proof-inner">
-        <div class="proof-card">
-            <span class="proof-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15l-2 5l9-11h-5l2-5l-9 11h5z"/></svg></span>
-            <p class="proof-text">認定テクニカルアナリスト<br>（<span class="tooltip-wrap">CMTA®<button class="tooltip-trigger" aria-label="用語説明">i</button><span class="tooltip-bubble">日本テクニカルアナリスト協会の認定資格。チャート分析の専門家として認められた証明</span></span>）<strong>よすが</strong>が主宰</p>
-        </div>
-        <div class="proof-card">
-            <span class="proof-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 7 7 7 7"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 17 7 17 7"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></span>
-            <p class="proof-text"><span class="tooltip-wrap">Fintokei<button class="tooltip-trigger" aria-label="用語説明">i</button><span class="tooltip-bubble">トレード技術の審査に合格すると最大5,000万円の運用資金を提供してもらえるサービス。運用資金なしでプロになれる</span></span>合格率<br><strong>業界トップクラス</strong></p>
-        </div>
-        <div class="proof-card">
-            <span class="proof-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></span>
-            <p class="proof-text">平日毎日更新の<br><strong><span class="tooltip-wrap">シナリオ動画<button class="tooltip-trigger" aria-label="用語説明">i</button><span class="tooltip-bubble">よすがが毎朝配信する動画。その日の相場の見通しとエントリーポイントを解説</span></span></strong></p>
-        </div>
-        <div class="proof-card">
-            <span class="proof-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a5b4fc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
-            <p class="proof-text">24時間<br><strong>質問し放題</strong></p>
-        </div>
     </div>
 </section>
 
@@ -240,7 +201,7 @@
     <div class="section-glow section-glow--indigo-br"></div>
     <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--yellow bg-geo--center-left" aria-hidden="true">
     <div class="features-inner">
-        <span class="section-title-badge section-title-badge--blue">FX SPACEで何ができる？</span>
+        <span class="section-title-badge section-title-badge--blue">なぜ結果が出るのか？</span>
         <h2 class="heading-lg text-center">学ぶ。効率化する。稼ぐ。</h2>
         <p class="features-lead">この3つを、すべてFX SPACE内で完結できます。</p>
         <div class="features-grid">
@@ -277,14 +238,14 @@
 <section class="preview-section" id="preview">
     <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--yellow bg-geo--center-left" aria-hidden="true">
     <div class="preview-inner">
-        <span class="section-title-badge section-title-badge--blue">INSIDE</span>
-        <h2 class="heading-lg">実際に届く<br>コンテンツを覗いてみる</h2>
+        <span class="section-title-badge section-title-badge--blue">どんな環境なのか？</span>
+        <h2 class="heading-lg">プロを生み出す環境の中身。</h2>
         <p class="preview-lead">テキストだけでは伝わらない。<br>メンバーが毎日触れているリアルな中身をお見せします。</p>
 
         <div class="preview-tabs">
-            <button class="preview-tab active" data-preview="scenario">シナリオ動画</button>
-            <button class="preview-tab" data-preview="ytt">YTT（トレードツール）</button>
-            <button class="preview-tab" data-preview="zeropro">ゼロプロ90</button>
+            <button class="preview-tab active" data-preview="scenario"><img src="images/icon-youtube.png" alt="" class="preview-tab-icon">シナリオ動画</button>
+            <button class="preview-tab" data-preview="ytt"><img src="images/icon-ytt.png" alt="" class="preview-tab-icon">YTT（トレードツール）</button>
+            <button class="preview-tab" data-preview="zeropro"><img src="images/icon-zeropro.png" alt="" class="preview-tab-icon">ゼロプロ90</button>
         </div>
 
         <div class="preview-panels">
@@ -839,9 +800,9 @@
     <div class="section-glow section-glow--green-r"></div>
     <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--green bg-geo--center-right" aria-hidden="true">
     <div class="community-inner">
-        <span class="section-title-badge section-title-badge--blue">COMMUNITY</span>
+        <span class="section-title-badge section-title-badge--blue">続けられるか？</span>
         <h2 class="heading-lg">一人で悩まない。<br>仲間がいる。</h2>
-        <p class="community-lead">初心者の質問にも、よすが本人が直接答える。<br>そんなコミュニティ、他にありますか？</p>
+        <p class="community-lead">初心者の質問にも、よすが本人や現役のプロトレーダーたちが答えてくれる。<br>そんなコミュニティ、他にありますか？</p>
 
         <div class="community-carousel" id="community-carousel">
             <button class="community-carousel-arrow community-carousel-prev" id="cc-prev" aria-label="前へ">&#8249;</button>
@@ -919,15 +880,14 @@
 <section class="founder-section" id="founder">
     <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--blue bg-geo--top-right" aria-hidden="true">
     <div class="founder-inner">
-        <span class="section-title-badge section-title-badge--blue">FOUNDER</span>
+        <span class="section-title-badge section-title-badge--blue">誰が作っているのか？</span>
         <h2 class="founder-section-title">主宰者</h2>
-        <div class="founder-card">
-            <img src="img/symbol-mark.png" alt="" class="founder-bg-mark">
-            <div class="founder-top">
-                <div class="founder-avatar"><img src="images/chat_photo_4.png" alt="よすが"></div>
-                <div>
-                    <h2 class="founder-name">よすが</h2>
+        <div class="founder-spread">
+            <div class="founder-profile">
+                <div class="founder-avatar-ring">
+                    <div class="founder-avatar"><img src="images/chat_photo_4.png" alt="よすが"></div>
                 </div>
+                <h2 class="founder-name">よすが</h2>
                 <div class="founder-sns">
                     <a href="https://x.com/yosuga____" target="_blank"><img src="img/icon-x.png" alt="X"></a>
                     <a href="https://www.youtube.com/@fxyosuga" target="_blank"><img src="img/icon-youtube.png" alt="YouTube"></a>
@@ -935,20 +895,21 @@
                 </div>
             </div>
 
-            <ul class="founder-creds-list">
+            <ul class="founder-creds">
                 <li>認定テクニカルアナリスト（CMTA®）</li>
                 <li>トレーダー歴 7年</li>
-                <li>書籍「結果を勝ち取る！本気のFX」著者</li>
                 <li>プロトレーダー 420人以上輩出</li>
+                <li>書籍「結果を勝ち取る！本気のFX」共著</li>
             </ul>
 
-            <div class="founder-message">
+            <blockquote class="founder-quote">
                 <p>「FXで人生を変える」を冗談じゃなく<br>本気で実現できる環境を作りました。</p>
-            </div>
+            </blockquote>
         </div>
     </div>
 </section>
 
+<hr class="section-divider">
 <!-- =============================================
      6. PRICING — シンプルに
      ============================================= -->
@@ -957,8 +918,8 @@
     <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--purple bg-geo--center" aria-hidden="true">
     <div class="pricing-inner">
         <div class="pricing-header">
-            <span class="section-title-badge section-title-badge--blue">PLANS</span>
-            <h2>無料から<span class="pricing-h2-accent">始められる</span></h2>
+            <span class="section-title-badge section-title-badge--blue">始めるには？</span>
+            <h2 class="heading-lg text-center">3つのプランから選ぶだけ。</h2>
         </div>
         <div class="plan-carousel" id="plan-carousel">
             <div class="plan-carousel-track">
@@ -992,7 +953,7 @@
                             <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">プロに質問し放題</span></li>
                             <li><span class="pf-icon pf-icon-check"><img src="img/check-orange.png" alt="✓"></span><span class="pf-text">AIサポート</span></li>
                         </ul>
-                        <p class="plan-more">...ほか多数の機能を利用可能</p>
+                        <p class="plan-more">ほか多数の機能を利用可能</p>
                         <a href="https://discord.gg/CcUtqSdRDZ" target="_blank" class="btn plan-cta plan-cta-primary">詳しくはDiscordで →</a>
                     </div>
                 </div>
@@ -1026,34 +987,24 @@
      FAQ
      ============================================= -->
 <section class="faq-section" id="faq">
+    <img src="images/bg-geo-3d.png" alt="" class="bg-geo bg-geo--blue bg-geo--faq" aria-hidden="true">
     <div class="faq-inner">
-        <span class="section-title-badge section-title-badge--blue">FAQ</span>
         <h2 class="heading-lg text-center">よくある質問</h2>
-        <div class="faq-list">
-            <details class="faq-item">
-                <summary class="faq-question"><span class="faq-q-text">FX未経験でも大丈夫ですか？</span><span class="faq-icon"></span></summary>
-                <div class="faq-answer"><p>はい。メンバーの約半数がFX未経験からスタートしています。ゼロプロ90は完全初心者向けのカリキュラムで、デモトレードから始めるので資金リスクもありません。</p></div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question"><span class="faq-q-text">Fintokeiとは何ですか？</span><span class="faq-icon"></span></summary>
-                <div class="faq-answer"><p>トレーダーの実力を審査し、合格者に最大5,000万円の運用資金を提供するプロップファームです。運用資金なしでプロトレーダーとして活動でき、利益の一部を報酬として受け取れます。FX SPACEからは300名以上が合格しています。</p></div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question"><span class="faq-q-text">どのくらいの資金が必要ですか？</span><span class="faq-icon"></span></summary>
-                <div class="faq-answer"><p>フリープランは無料、スタンダードプランは月額2,900円です。トレード自体もFintokeiを利用すれば運用資金なしで始められます。まずは無料プランでコミュニティの雰囲気を確認してみてください。</p></div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question"><span class="faq-q-text">仕事や学校と両立できますか？</span><span class="faq-icon"></span></summary>
-                <div class="faq-answer"><p>多くのメンバーが会社員・学生・主婦です。シナリオ動画は毎朝配信されるので通勤中に確認でき、トレード自体も1日15〜30分程度から始められます。</p></div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question"><span class="faq-q-text">他のFXスクールとの違いは？</span><span class="faq-icon"></span></summary>
-                <div class="faq-answer"><p>最大の違いは、主宰者のよすが本人が毎日シナリオ動画を配信し、質問にも直接回答する点です。また、独自ツールYTTの提供、420名以上のプロトレーダー輩出実績など、結果で証明しています。</p></div>
-            </details>
-            <details class="faq-item">
-                <summary class="faq-question"><span class="faq-q-text">途中で解約できますか？</span><span class="faq-icon"></span></summary>
-                <div class="faq-answer"><p>はい。いつでも解約可能で、違約金や縛り期間はありません。</p></div>
-            </details>
+        <div class="community-chat static-chat faq-chat" id="faq-chat">
+            <div class="cc-header"><span class="cc-header-hash">#</span><span class="cc-header-name">よくある質問</span></div>
+            <div class="cc-body" id="faq-chat-body">
+                <div class="cc-messages" id="faq-messages">
+                    <div class="cc-msg faq-welcome-msg"><div class="cc-avatar cc-avatar-yosuga faq-welcome-avatar"></div><div class="cc-msg-body"><div class="cc-msg-header"><span class="cc-msg-name faq-welcome-name" style="color:#ed4245;">よすが</span><span class="cc-msg-time">今日 10:00</span></div><div class="cc-msg-content faq-welcome-content">気になることがあれば何でも聞いてください！<br>下の質問をクリックすると回答します👇</div></div></div>
+                </div>
+            </div>
+            <div class="faq-choices" id="faq-choices">
+                <button class="faq-choice" data-faq-idx="0" style="--i:0">FX未経験でも大丈夫？</button>
+                <button class="faq-choice" data-faq-idx="1" style="--i:1">Fintokeiって何？</button>
+                <button class="faq-choice" data-faq-idx="2" style="--i:2">必要な資金は？</button>
+                <button class="faq-choice" data-faq-idx="3" style="--i:3">仕事や学校と両立できる？</button>
+                <button class="faq-choice" data-faq-idx="4" style="--i:4">他との違いは？</button>
+                <button class="faq-choice" data-faq-idx="5" style="--i:5">途中で解約できる？</button>
+            </div>
         </div>
     </div>
 </section>
