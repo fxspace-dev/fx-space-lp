@@ -189,6 +189,7 @@
         var current = 0, total = slides.length;
         var dots = carousel.querySelectorAll('.rm-carousel-dot');
         var tabs = carousel.querySelectorAll('.rm-tab');
+        var chips = document.querySelectorAll('.rm-chip');
         var pill = carousel.querySelector('.rm-tabs-pill');
         var prevBtn = document.getElementById('rm-prev');
         var nextBtn = document.getElementById('rm-next');
@@ -226,6 +227,11 @@
                 gsap.to(chartLine, { strokeDashoffset: 0, duration: 2.5, ease: 'power2.inOut' });
             }
 
+            var dashedLine = slide.querySelector('.rm-chart-line-dashed');
+            if (dashedLine) {
+                gsap.to(dashedLine, { opacity: 0.5, duration: 0.6, delay: 2.3 });
+            }
+
             var joinLines = slide.querySelectorAll('.rm-join-line');
             var joinBgs = slide.querySelectorAll('.rm-join-bg');
             var joinTexts = slide.querySelectorAll('.rm-join-text');
@@ -256,6 +262,9 @@
             for (var t = 0; t < tabs.length; t++) {
                 tabs[t].classList.toggle('active', t === current);
             }
+            for (var c = 0; c < chips.length; c++) {
+                chips[c].classList.toggle('active', c === current);
+            }
             movePill(current);
             animateSlide(slides[current], current);
         }
@@ -277,6 +286,11 @@
         }
         for (var k = 0; k < tabs.length; k++) {
             tabs[k].addEventListener('click', function () {
+                goTo(parseInt(this.getAttribute('data-index')));
+            });
+        }
+        for (var ch = 0; ch < chips.length; ch++) {
+            chips[ch].addEventListener('click', function () {
                 goTo(parseInt(this.getAttribute('data-index')));
             });
         }
@@ -426,8 +440,8 @@
     (function () {
         var faqData = [
             { q: 'FX未経験でも大丈夫？', a: 'もちろん！メンバーの約半数が未経験スタートです。ゼロプロ90は完全初心者向けのカリキュラムだし、デモトレードから始めるので安心してください👍', reactions: '🙏 24 💪 18' },
-            { q: 'Fintokeiって何？', a: 'プロップファームと呼ばれるもので、チャレンジプランを購入してデモ口座で利益目標を達成すると、利益の一部を報酬として受け取れる仕組みです。自分の資金を運用せずに稼げるのが魅力ですね🔥', reactions: '🔥 31' },
-            { q: '必要な資金は？', a: 'フリープランは無料、スタンダードでも月2,900円です。まずは無料で雰囲気を見てみてください！', reactions: '😊 15' },
+            { q: 'Fintokeiって何？', a: 'プロップファームと呼ばれるもので、チャレンジプランを購入してデモ口座で利益目標を達成すると、仮想資金で運用し利益の80%以上を出金できる仕組みです。自分の資金を使わずに稼げるのが魅力ですね🔥', reactions: '🔥 31' },
+            { q: '必要な費用は？', a: 'フリープランは無料、スタンダードでも月2,900円です。まずは無料で雰囲気を見てみてください！', reactions: '😊 15' },
             { q: '仕事や学校と両立できる？', a: 'できます！むしろ会社員や学生の方も多いです。シナリオ動画は毎朝出すのでスキマ時間にチェックできるし、トレード自体も1日15〜30分あればOK。無理なく続けられますよ👌', reactions: '👍 22 ❤️ 9' },
             { q: '他との違いは？', a: '僕自身が毎日シナリオ動画を出して、質問にも直接答えてるところ。あとは独自ツールYTTと、420名以上のプロ輩出という結果ですね。口だけじゃなく数字で証明してます📊', reactions: '🔥 27 👏 14' },
             { q: '途中で解約できる？', a: 'もちろん！違約金も縛り期間もないので、気軽に始めてもらって大丈夫です🙆‍♂️', reactions: '🙏 19' }
@@ -477,57 +491,143 @@
 
     })();
 
-    // ── Content Preview tabs + pager ──
+    // ── Learn section tabs ──
     (function () {
-        var tabs = document.querySelectorAll('.preview-tab');
-        var panels = document.querySelectorAll('.preview-panel');
-        var dots = document.querySelectorAll('.preview-pager-dot');
-        var prevBtn = document.querySelector('.preview-pager-prev');
-        var nextBtn = document.querySelector('.preview-pager-next');
+        var tabs = document.querySelectorAll('.learn-tab');
+        var panels = document.querySelectorAll('.learn-panel');
         if (!tabs.length) return;
 
-        function activateTab(index) {
-            tabs.forEach(function (t) { t.classList.remove('active'); });
-            tabs[index].classList.add('active');
-            panels.forEach(function (p) {
-                if (p.getAttribute('data-panel') === tabs[index].getAttribute('data-preview')) {
-                    p.classList.add('is-active');
-                } else {
-                    p.classList.remove('is-active');
+        tabs.forEach(function (tab) {
+            tab.addEventListener('click', function () {
+                var target = this.getAttribute('data-learn');
+                tabs.forEach(function (t) { t.classList.remove('is-active'); });
+                this.classList.add('is-active');
+                panels.forEach(function (p) {
+                    if (p.getAttribute('data-learn-panel') === target) {
+                        p.classList.add('is-active');
+                    } else {
+                        p.classList.remove('is-active');
+                    }
+                });
+            });
+        });
+    })();
+
+    // ── Video Nav interactions ──
+    (function () {
+        var block = document.querySelector('.vidnav-mock');
+        if (!block) return;
+
+        // Tag toggle (visual only)
+        block.querySelectorAll('.vidnav-filters').forEach(function (group) {
+            var tags = group.querySelectorAll('.vidnav-tag');
+            tags.forEach(function (tag) {
+                tag.addEventListener('click', function () {
+                    tags.forEach(function (t) { t.classList.remove('vidnav-tag--active'); });
+                    this.classList.add('vidnav-tag--active');
+                });
+            });
+        });
+
+        // Typing animation on scroll
+        var input = block.querySelector('.vidnav-search-input');
+        var typed = false;
+        if (input) {
+            var words = ['ダウ手法', 'ライン', 'シナリオ', 'ゼロプロ'];
+            var observer = new IntersectionObserver(function (entries) {
+                if (entries[0].isIntersecting && !typed) {
+                    typed = true;
+                    var wi = 0;
+                    function typeWord() {
+                        if (wi >= words.length) wi = 0;
+                        var word = words[wi];
+                        var ci = 0;
+                        input.value = '';
+                        input.placeholder = '';
+                        var iv = setInterval(function () {
+                            if (ci < word.length) {
+                                input.value += word[ci];
+                                ci++;
+                            } else {
+                                clearInterval(iv);
+                                setTimeout(function () {
+                                    input.value = '';
+                                    wi++;
+                                    if (wi < words.length) {
+                                        setTimeout(typeWord, 400);
+                                    } else {
+                                        input.value = '';
+                                        input.placeholder = 'キーワードで動画を検索…';
+                                    }
+                                }, 1200);
+                            }
+                        }, 100);
+                    }
+                    setTimeout(typeWord, 600);
                 }
-            });
-            dots.forEach(function (d, i) {
-                d.classList.toggle('is-active', i === index);
-            });
+            }, { threshold: 0.3 });
+            observer.observe(block);
         }
+    })();
 
-        function getActiveIndex() {
-            for (var i = 0; i < tabs.length; i++) {
-                if (tabs[i].classList.contains('active')) return i;
+    // ── Scroll animations for new sections ──
+    gsap.from('.learn-inner .heading-lg', {
+        scrollTrigger: { trigger: '.learn-section', start: 'top 80%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power3.out'
+    });
+    gsap.from('.learn-tabs', {
+        scrollTrigger: { trigger: '.learn-tabs', start: 'top 88%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power3.out'
+    });
+    gsap.from('.vidnav-mock', {
+        scrollTrigger: { trigger: '.vidnav-mock', start: 'top 85%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power3.out'
+    });
+    gsap.from('.tools-inner .heading-lg', {
+        scrollTrigger: { trigger: '.tools-section', start: 'top 80%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power3.out'
+    });
+    gsap.from('.earn-inner .heading-lg', {
+        scrollTrigger: { trigger: '.earn-section', start: 'top 80%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power3.out'
+    });
+    gsap.from('.earn-graph-card', {
+        scrollTrigger: { trigger: '.earn-graph-card', start: 'top 85%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power3.out'
+    });
+    gsap.from('.earn-sim-card', {
+        scrollTrigger: { trigger: '.earn-sim-card', start: 'top 85%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power3.out'
+    });
+
+    // ── YTT Simulator fullscreen ──
+    (function () {
+        var frame = document.getElementById('ytt-sim-frame');
+        var overlay = document.getElementById('ytt-sim-fs-overlay');
+        var exitBtn = document.getElementById('ytt-sim-exit-btn');
+        if (!frame) return;
+
+        window.addEventListener('message', function (e) {
+            if (e.data && e.data.type === 'ytt-go-fullscreen') {
+                frame.classList.add('is-fullscreen');
+                overlay.classList.add('visible');
+                exitBtn.classList.add('visible');
+                frame.querySelector('iframe').contentWindow.postMessage({ type: 'ytt-fullscreen-state', fullscreen: true }, '*');
             }
-            return 0;
-        }
-
-        tabs.forEach(function (tab, i) {
-            tab.addEventListener('click', function () { activateTab(i); });
+            if (e.data && e.data.type === 'ytt-close-fullscreen') {
+                frame.classList.remove('is-fullscreen');
+                overlay.classList.remove('visible');
+                exitBtn.classList.remove('visible');
+                frame.querySelector('iframe').contentWindow.postMessage({ type: 'ytt-fullscreen-state', fullscreen: false }, '*');
+            }
         });
 
-        dots.forEach(function (dot, i) {
-            dot.addEventListener('click', function () { activateTab(i); });
+        exitBtn.addEventListener('click', function () {
+            frame.classList.remove('is-fullscreen');
+            overlay.classList.remove('visible');
+            exitBtn.classList.remove('visible');
+            frame.querySelector('iframe').contentWindow.postMessage({ type: 'ytt-fullscreen-state', fullscreen: false }, '*');
         });
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function () {
-                var idx = getActiveIndex();
-                activateTab(idx > 0 ? idx - 1 : tabs.length - 1);
-            });
-        }
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function () {
-                var idx = getActiveIndex();
-                activateTab(idx < tabs.length - 1 ? idx + 1 : 0);
-            });
-        }
     })();
 
     // ── Ambient section glows ──
@@ -558,4 +658,272 @@
         });
     });
 
+})();
+
+/* ============================
+   Fintokei Simulator
+   ============================ */
+var fintokeiPlans = {
+    'sokko-bronze': { name: 'ブロンズ', balance: 2000000, rate: 1.00 },
+    'sokko-silver': { name: 'シルバー', balance: 5000000, rate: 1.00 },
+    'sokko-gold': { name: 'ゴールド', balance: 10000000, rate: 1.00 },
+    'sokko-platinum': { name: 'プラチナ', balance: 20000000, rate: 1.00 },
+    'sokko-diamond': { name: 'ダイヤモンド', balance: 35000000, rate: 1.00 },
+    'challenge-crystal': { name: 'クリスタル', balance: 2000000, rate: 0.80 },
+    'challenge-pearl': { name: 'パール', balance: 5000000, rate: 0.80 },
+    'challenge-ruby': { name: 'ルビー', balance: 10000000, rate: 0.80 },
+    'challenge-sapphire': { name: 'サファイア', balance: 20000000, rate: 0.80 },
+    'challenge-topaz': { name: 'トパーズ', balance: 35000000, rate: 0.80 },
+    'challenge-emerald': { name: 'エメラルド', balance: 50000000, rate: 0.80 }
+};
+var fintokeiAnimId = null;
+function formatYen(n) {
+    if (n >= 10000) return (n / 10000).toFixed(n >= 10000000 ? 0 : 1) + '万円';
+    return Math.round(n).toLocaleString() + '円';
+}
+function formatYenShort(n) {
+    if (n >= 100000000) return (n / 100000000).toFixed(1) + '億円';
+    if (n >= 10000) return Math.round(n / 10000).toLocaleString() + '万円';
+    return Math.round(n).toLocaleString() + '円';
+}
+function parseYenShort(text) {
+    if (!text || text === '-') return 0;
+    var m;
+    if ((m = text.match(/([\d,.]+)\s*億円/))) return parseFloat(m[1].replace(/,/g, '')) * 100000000;
+    if ((m = text.match(/([\d,.]+)\s*万円/))) return parseFloat(m[1].replace(/,/g, '')) * 10000;
+    if ((m = text.match(/([\d,.]+)\s*円/)))   return parseFloat(m[1].replace(/,/g, ''));
+    return 0;
+}
+var _fkAnimTimers = {};
+function animateValue(el, fromVal, toVal, duration, formatter) {
+    var id = el.id || el.className;
+    if (_fkAnimTimers[id]) cancelAnimationFrame(_fkAnimTimers[id]);
+    if (fromVal === toVal) { el.textContent = formatter(toVal); return; }
+    var startTime = null;
+    function step(ts) {
+        if (!startTime) startTime = ts;
+        var p = Math.min((ts - startTime) / duration, 1);
+        var ease = 1 - Math.pow(1 - p, 3);
+        var cur = fromVal + (toVal - fromVal) * ease;
+        el.textContent = formatter(cur);
+        if (p < 1) { _fkAnimTimers[id] = requestAnimationFrame(step); }
+        else { delete _fkAnimTimers[id]; }
+    }
+    _fkAnimTimers[id] = requestAnimationFrame(step);
+}
+function runFintokeiSim() {
+    var planKey = document.getElementById('fintokei-plan').value;
+    var monthlyRate = parseFloat(document.getElementById('fintokei-rate').value) / 100;
+    var months = parseInt(document.getElementById('fintokei-months').value);
+    if (isNaN(monthlyRate) || isNaN(months) || months < 1) return;
+    var plan = fintokeiPlans[planKey];
+    if (!plan) return;
+
+    var data = [];
+    var monthlyProfit = plan.balance * monthlyRate;
+    for (var i = 0; i < months; i++) {
+        data.push(monthlyProfit * (i + 1));
+    }
+    var totalProfit = data[data.length - 1];
+    var totalReward = totalProfit * plan.rate;
+    var avgMonthly = totalReward / months;
+    var refMax = Math.sqrt(22000000 * Math.max(data[data.length - 1], 1)) * 1.03;
+
+    var elMonthly = document.getElementById('fintokei-monthly');
+    var elTotal   = document.getElementById('fintokei-total');
+    var fromMonthly = parseYenShort(elMonthly.textContent);
+    var fromTotal   = parseYenShort(elTotal.textContent);
+    animateValue(elMonthly, fromMonthly, avgMonthly, 600, formatYenShort);
+    animateValue(elTotal,   fromTotal,   totalReward, 600, formatYenShort);
+    document.getElementById('fintokei-graph-label').textContent = plan.name + ' / 月利' + (monthlyRate * 100) + '% / ' + months + 'ヶ月';
+
+    var cards = document.querySelectorAll('.earn-result-card');
+    for (var ci = 0; ci < cards.length; ci++) {
+        gsap.fromTo(cards[ci], { scale: 1 }, { scale: 1.03, duration: 0.15, yoyo: true, repeat: 1, ease: 'power1.inOut' });
+    }
+    drawFintokeiChart(data, months, refMax);
+}
+function drawFintokeiChart(data, months, refBalance) {
+    if (fintokeiAnimId) cancelAnimationFrame(fintokeiAnimId);
+    var canvas = document.getElementById('fintokei-chart');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth;
+    var h = canvas.clientHeight;
+    canvas.width = w * dpr;
+    canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+
+    var isMobile = w < 400;
+    var padL = isMobile ? 52 : 90, padR = isMobile ? 12 : 24, padT = isMobile ? 24 : 32, padB = isMobile ? 32 : 40;
+    var axisFont = isMobile ? '9px Inter, sans-serif' : '11px Inter, sans-serif';
+    var cw = w - padL - padR;
+    var ch = h - padT - padB;
+    var lastVal = data[data.length - 1];
+    if (lastVal === 0) lastVal = 1;
+    var maxVal = Math.max(refBalance || lastVal, lastVal * 1.05);
+    if (maxVal === 0) maxVal = 1;
+    var barW = Math.max(cw / months * 0.6, 4);
+    var animStart = null;
+    var staggerDelay = 80;
+    var barGrowDuration = 500;
+    var hoverIdx = -1;
+    var animDone = false;
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function drawFrame(timestamp) {
+        if (!animStart) animStart = timestamp;
+        var elapsed = timestamp - animStart;
+        ctx.clearRect(0, 0, w, h);
+        ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+        ctx.lineWidth = 1;
+        for (var g = 0; g <= 4; g++) {
+            var gy = padT + ch - (ch * g / 4);
+            ctx.beginPath(); ctx.moveTo(padL, gy); ctx.lineTo(w - padR, gy); ctx.stroke();
+            if (g > 0) {
+                ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.font = axisFont; ctx.textAlign = 'right';
+                var yLabel = isMobile ? formatYenShort(maxVal * g / 4) : formatYen(maxVal * g / 4);
+                ctx.fillText(yLabel, padL - 6, gy + 4);
+            }
+        }
+        ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.font = axisFont; ctx.textAlign = 'center';
+        var step;
+        if (isMobile) { step = months <= 6 ? 1 : (months <= 12 ? 3 : (months <= 24 ? 6 : 12)); }
+        else { step = months <= 12 ? 1 : (months <= 24 ? 2 : 6); }
+        for (var xi = 0; xi < months; xi += step) {
+            var lx = padL + (cw * xi / (months - 1 || 1));
+            ctx.fillText((xi + 1) + '月', lx, h - (isMobile ? 6 : 10));
+        }
+        for (var i = 0; i < data.length; i++) {
+            var barStart = i * staggerDelay;
+            var barElapsed = elapsed - barStart;
+            if (barElapsed <= 0) continue;
+            var fraction = animDone ? 1 : Math.min(barElapsed / barGrowDuration, 1);
+            fraction = easeOutCubic(fraction);
+            var bx = padL + (cw * i / (months - 1 || 1)) - barW / 2;
+            var bh = (data[i] / maxVal) * ch * fraction;
+            var by = padT + ch - bh;
+            var isHover = (i === hoverIdx);
+            var grad = ctx.createLinearGradient(0, by, 0, padT + ch);
+            grad.addColorStop(0, isHover ? '#6b3fa0' : '#5a2d8c');
+            grad.addColorStop(1, isHover ? '#7d4db5' : '#6b3fa0');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            var r = Math.min(barW / 2, 6);
+            ctx.moveTo(bx + r, by);
+            ctx.lineTo(bx + barW - r, by);
+            ctx.quadraticCurveTo(bx + barW, by, bx + barW, by + r);
+            ctx.lineTo(bx + barW, padT + ch);
+            ctx.lineTo(bx, padT + ch);
+            ctx.lineTo(bx, by + r);
+            ctx.quadraticCurveTo(bx, by, bx + r, by);
+            ctx.fill();
+        }
+        if (hoverIdx >= 0 && hoverIdx < data.length && animDone) {
+            var tx = padL + (cw * hoverIdx / (months - 1 || 1));
+            var ty = padT + ch - (data[hoverIdx] / maxVal) * ch;
+            var label = (hoverIdx + 1) + 'ヶ月目: ' + formatYenShort(data[hoverIdx]);
+            ctx.font = 'bold 12px Inter, sans-serif';
+            var tw = ctx.measureText(label).width + 16;
+            var thh = 26;
+            var ttx = Math.min(Math.max(tx - tw / 2, 2), w - tw - 2);
+            var tty = ty - thh - 10;
+            if (tty < 2) tty = ty + 10;
+            ctx.fillStyle = 'rgba(10,10,26,0.92)';
+            ctx.beginPath();
+            ctx.roundRect(ttx, tty, tw, thh, 6);
+            ctx.fill();
+            ctx.fillStyle = '#fff'; ctx.textAlign = 'center';
+            ctx.fillText(label, ttx + tw / 2, tty + 17);
+            ctx.fillStyle = '#fff';
+            ctx.beginPath(); ctx.arc(tx, ty, 4, 0, Math.PI * 2); ctx.fill();
+            ctx.fillStyle = '#6366f1';
+            ctx.beginPath(); ctx.arc(tx, ty, 2.5, 0, Math.PI * 2); ctx.fill();
+        }
+        var lastBarEnd = (data.length - 1) * staggerDelay + barGrowDuration;
+        if (!animDone && elapsed < lastBarEnd) {
+            fintokeiAnimId = requestAnimationFrame(drawFrame);
+        } else {
+            animDone = true;
+        }
+    }
+    fintokeiAnimId = requestAnimationFrame(drawFrame);
+
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        canvas.onmousemove = function(e) {
+            if (!animDone) return;
+            var rect = canvas.getBoundingClientRect();
+            var mx = e.clientX - rect.left;
+            var closest = -1, closestDist = Infinity;
+            for (var i = 0; i < data.length; i++) {
+                var bxh = padL + (cw * i / (months - 1 || 1));
+                var d = Math.abs(mx - bxh);
+                if (d < closestDist && d < barW + 10) { closestDist = d; closest = i; }
+            }
+            if (closest !== hoverIdx) { hoverIdx = closest; drawFrame(performance.now()); }
+        };
+        canvas.onmouseleave = function() {
+            if (hoverIdx !== -1) { hoverIdx = -1; if (animDone) drawFrame(performance.now()); }
+        };
+        canvas.style.cursor = 'crosshair';
+    }
+}
+
+// ── Fintokei Plan Selector ──
+(function() {
+    var selector = document.getElementById('fk-plan-selector');
+    var toggle = document.getElementById('fk-plan-toggle');
+    var dropdown = document.getElementById('fk-plan-dropdown');
+    var toggleText = document.getElementById('fk-plan-toggle-text');
+    var hiddenInput = document.getElementById('fintokei-plan');
+    if (!selector || !toggle || !dropdown) return;
+
+    toggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = selector.classList.toggle('open');
+        if (isOpen) {
+            var active = dropdown.querySelector('.fk-plan-active');
+            if (active) active.scrollIntoView({ block: 'nearest' });
+        }
+    });
+    dropdown.addEventListener('click', function(e) {
+        var btn = e.target.closest('.fk-plan-option');
+        if (!btn) return;
+        var val = btn.getAttribute('data-value');
+        var allOpts = dropdown.querySelectorAll('.fk-plan-option');
+        for (var i = 0; i < allOpts.length; i++) allOpts[i].classList.remove('fk-plan-active');
+        btn.classList.add('fk-plan-active');
+        toggleText.textContent = btn.textContent;
+        hiddenInput.value = val;
+        selector.classList.remove('open');
+        runFintokeiSim();
+    });
+    document.addEventListener('click', function(e) {
+        if (!selector.contains(e.target)) selector.classList.remove('open');
+    });
+
+    // Input listeners
+    var rateInput = document.getElementById('fintokei-rate');
+    var monthsInput = document.getElementById('fintokei-months');
+    if (rateInput) {
+        rateInput.addEventListener('change', runFintokeiSim);
+        rateInput.addEventListener('input', runFintokeiSim);
+    }
+    if (monthsInput) {
+        monthsInput.addEventListener('change', runFintokeiSim);
+        monthsInput.addEventListener('input', runFintokeiSim);
+    }
+
+    // Auto-run on scroll into view
+    var earnSection = document.querySelector('.earn-section');
+    if (earnSection && typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.create({
+            trigger: earnSection,
+            start: 'top 75%',
+            once: true,
+            onEnter: function() { runFintokeiSim(); }
+        });
+    }
 })();
